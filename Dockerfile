@@ -18,10 +18,20 @@ RUN mkdir -p /root/dos
 
 WORKDIR /root/dos
 
+# Using two sources since TravisCI seems to have trouble connecting to archive.org.
 RUN curl \
-    -L -s \
+    -L \
     -o "./olddos.exe" \
-    "https://web.archive.org/web/20120215074213/http://download.microsoft.com/download/win95upg/tool_s/1.0/w95/en-us/olddos.exe"
+    "https://web.archive.org/web/20120215074213/http://download.microsoft.com/download/win95upg/tool_s/1.0/w95/en-us/olddos.exe" \
+    || \
+    curl \
+    -L \
+    -o "./olddos.exe" \
+    "http://www.pcxt-micro.com/download/olddos.exe"
+
+ADD olddos.exe.sha1 ./olddos.exe.sha1
+
+RUN sha1sum -c ./olddos.exe.sha1
 
 RUN zip -J "./olddos.exe"
 RUN yes | unzip "./olddos.exe"
