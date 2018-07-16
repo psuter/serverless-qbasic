@@ -10,3 +10,7 @@ This repository contains all code required to run a QBasic program as an [OpenWh
 4. Run it: `wsk action invoke -br morse -p input "les sanglots longs des violons de l'automne"`
 
 [![Build Status](https://travis-ci.org/psuter/serverless-qbasic.svg?branch=master)](https://travis-ci.org/psuter/serverless-qbasic)
+
+## Write-up
+
+You can find a blog post about this project [here](https://psuter.net/2018/07/15/serverless-qbasic).
